@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+
+import Link from 'next/link'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -25,10 +25,10 @@ import {
 // third party
 import * as Yup from 'yup'
 import { Formik } from 'formik'
+import Image from 'next/image'
 
 // project imports
-import useScriptRef from 'hooks/useScriptRef'
-import Google from 'assets/images/icons/social-google.svg'
+import Google from 'public/images/icons/social-google.svg'
 import AnimateButton from 'components/ui-component/extended/AnimateButton'
 import { strengthColor, strengthIndicator } from 'utils/password-strength'
 
@@ -40,11 +40,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 const FirebaseRegister = ({ ...others }) => {
   const theme = useTheme()
-  const scriptedRef = useScriptRef()
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
-  const customization = useSelector((state) => state.customization)
   const [showPassword, setShowPassword] = useState(false)
-  const [checked, setChecked] = useState(true)
 
   const [strength, setStrength] = useState(0)
   const [level, setLevel] = useState()
@@ -88,7 +85,7 @@ const FirebaseRegister = ({ ...others }) => {
               }}
             >
               <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
-                <img
+                <Image
                   src={Google}
                   alt="google"
                   width={16}
@@ -113,7 +110,7 @@ const FirebaseRegister = ({ ...others }) => {
                 borderColor: `${theme.palette.grey[100]} !important`,
                 color: `${theme.palette.grey[900]}!important`,
                 fontWeight: 500,
-                borderRadius: `${customization.borderRadius}px`,
+                borderRadius: `12 px`,
               }}
               disableRipple
               disabled
@@ -153,17 +150,13 @@ const FirebaseRegister = ({ ...others }) => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            if (scriptedRef.current) {
-              setStatus({ success: true })
-              setSubmitting(false)
-            }
+            setStatus({ success: true })
+            setSubmitting(false)
           } catch (err) {
             console.error(err)
-            if (scriptedRef.current) {
-              setStatus({ success: false })
-              setErrors({ submit: err.message })
-              setSubmitting(false)
-            }
+            setStatus({ success: false })
+            setErrors({ submit: err.message })
+            setSubmitting(false)
           }
         }}
       >
@@ -292,28 +285,6 @@ const FirebaseRegister = ({ ...others }) => {
               </FormControl>
             )}
 
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={checked}
-                      onChange={(event) => setChecked(event.target.checked)}
-                      name="checked"
-                      color="primary"
-                    />
-                  }
-                  label={
-                    <Typography variant="subtitle1">
-                      Agree with &nbsp;
-                      <Typography variant="subtitle1" component={Link} to="#">
-                        Terms & Condition.
-                      </Typography>
-                    </Typography>
-                  }
-                />
-              </Grid>
-            </Grid>
             {errors.submit && (
               <Box sx={{ mt: 3 }}>
                 <FormHelperText error>{errors.submit}</FormHelperText>

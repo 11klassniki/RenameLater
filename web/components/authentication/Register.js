@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom'
-
 // material-ui
 import { useTheme } from '@mui/material/styles'
 import { Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
 
 // project imports
-import AuthWrapper1 from './AuthWrapper1'
+import AuthWrapper from './AuthWrapper'
 import AuthCardWrapper from './AuthCardWrapper'
 import Logo from 'components/ui-component/Logo'
 import AuthRegister from '../auth-forms/AuthRegister'
 import AuthFooter from 'components/ui-component/cards/AuthFooter'
+
+import Link from 'next/link'
 
 // assets
 
@@ -20,7 +20,7 @@ const Register = () => {
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <AuthWrapper1>
+    <AuthWrapper>
       <Grid
         container
         direction="column"
@@ -43,8 +43,10 @@ const Register = () => {
                   justifyContent="center"
                 >
                   <Grid item sx={{ mb: 3 }}>
-                    <Link to="#">
-                      <Logo />
+                    <Link href="/">
+                      <div>
+                        <Logo />
+                      </div>
                     </Link>
                   </Grid>
                   <Grid item xs={12}>
@@ -93,12 +95,10 @@ const Register = () => {
                       xs={12}
                     >
                       <Typography
-                        component={Link}
-                        to="/pages/login/login3"
                         variant="subtitle1"
                         sx={{ textDecoration: 'none' }}
                       >
-                        Already have an account?
+                        <Link href="/login">Already have an account?</Link>
                       </Typography>
                     </Grid>
                   </Grid>
@@ -111,7 +111,7 @@ const Register = () => {
           <AuthFooter />
         </Grid>
       </Grid>
-    </AuthWrapper1>
+    </AuthWrapper>
   )
 }
 

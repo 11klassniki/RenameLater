@@ -20,9 +20,7 @@ const Home: NextPage = () => {
 
       <MUIButton />
 
-      <main className={styles.main}>
-        <Login />
-      </main>
+      <Login />
 
       <footer className={styles.footer}>
         <a

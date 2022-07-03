@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from 'styles/Home.module.css'
 import MUIButton from 'components/MUIButton'
+import Register from 'components/authentication/Register'
 import Link from 'next/link'
 
 const Home: NextPage = () => {
@@ -19,9 +20,7 @@ const Home: NextPage = () => {
 
       <MUIButton />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to User's Home!!!!</h1>
-      </main>
+      <Register />
 
       <footer className={styles.footer}>
         <a

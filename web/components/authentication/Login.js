@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles'
 import { Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
 
 // project imports
-import AuthWrapper1 from './AuthWrapper1'
+import AuthWrapper from './AuthWrapper'
 import AuthCardWrapper from './AuthCardWrapper'
 import AuthLogin from '../auth-forms/AuthLogin'
 import Logo from 'components/ui-component/Logo'
@@ -20,7 +20,7 @@ const Login = () => {
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <AuthWrapper1>
+    <AuthWrapper>
       <Grid
         container
         direction="column"
@@ -42,11 +42,6 @@ const Login = () => {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Grid item sx={{ mb: 3 }}>
-                    <Link href="/">
-                      <Logo />
-                    </Link>
-                  </Grid>
                   <Grid item xs={12}>
                     <Grid
                       container
@@ -92,14 +87,14 @@ const Login = () => {
                       alignItems="center"
                       xs={12}
                     >
-                      <Link href="/register">
-                        <Typography
-                          variant="subtitle1"
-                          sx={{ textDecoration: 'none' }}
-                        >
+                      <Typography
+                        variant="subtitle1"
+                        sx={{ textDecoration: 'none' }}
+                      >
+                        <Link href="/register">
                           Don&apos;t have an account?
-                        </Typography>
-                      </Link>
+                        </Link>
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -111,7 +106,7 @@ const Login = () => {
           <AuthFooter />
         </Grid>
       </Grid>
-    </AuthWrapper1>
+    </AuthWrapper>
   )
 }
 
