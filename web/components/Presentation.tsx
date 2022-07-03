@@ -3,7 +3,7 @@ import ProductCard from './ProductCard'
 
 import Box from '@mui/material/Box'
 
-const Presentation = (props) => {
+const Presentation = () => {
   const items = [
     {
       id: 1,

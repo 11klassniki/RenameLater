@@ -1,14 +1,20 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 // https://mui.com/material-ui/react-css-baseline/
-import CssBaseline from '@mui/material/CssBaseline'
+//github.com/codedthemes/berry-free-react-admin-template
+import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline, StyledEngineProvider } from '@mui/material'
+
+import themes from 'themes'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themes()}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </StyledEngineProvider>
   )
 }
 
